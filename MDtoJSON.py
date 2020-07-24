@@ -10,7 +10,9 @@ SPECIAL = ""
 CHARACTER = ""
 
 def makeCharacter(mdFile):
-	print("do stuff")
+	md = open(mdFile,'r')
+	line = md.readline().split(' ')
+	
 	
 def addLevel(tableRow):
-	
+	print("do stuff")
