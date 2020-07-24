@@ -1,4 +1,5 @@
-import json
+#import json
+from random import randint
 
 flist = []
 
@@ -22,6 +23,7 @@ class Character:
 	_classes = []
 	_languages = ["Common"]
 	_AC = 0
+	_BAB = 0
 	_hitpoints = 0
 	_fortitude = 0
 	_reflex = 0
@@ -32,11 +34,43 @@ class Character:
 	_darkvision = 0 # Darkvision range in feet
 	# To avoid having to check for racial feats
 	_firstLevelBonusFeats = 0
-	_bonusSkillPoints = 1
-	#def __init__(name=""):
-
-	def func():
-		print(_AC)
+	_bonusSkillPoints = 0
+	def assignAbilityScores(con,dex,str,cha,int,wis):
+		_con = con
+		_dex = dex
+		_str = str
+		_cha = cha 
+		_int = int 
+		_wis = wis
+	def abilityScorePointBuy(totalPoints,con,dex,str,cha,int,wis):
+		scoreCost = [0,1,2,3,4,5,6,8,10,13,16] # Ability score - 8 to get point cost
+		totalPoints -= scoreCost[con-8]
+		totalPoints -= scoreCost[dex-8]
+		totalPoints -= scoreCost[str-8] # I should change str & int 
+		totalPoints -= scoreCost[cha-8]
+		totalPoints -= scoreCost[int-8]
+		totalPoints -= scoreCost[wis-8]
+		if totalPoints < 0:
+			return
+		assignAbilityScores(con=con,dex=dex,str=str,cha=cha,int=int,wis=wis)
+	def increaseCon():
+		_con += 1
+	def increaseDex():
+		_dex += 1
+	def increaseStr():
+		_str += 1
+	def increaseCha():
+		_cha += 1
+	def increaseInt():
+		_int += 1
+	def increaseWis():
+		_wis += 1
+	def increaseHitpoints(hitDie,rerollOne=False,increaseByAverage=False):
+		if increaseByAverage:
+			return int(hitDie/2)
+		if rerollOne:
+			return randint(2,hitDie)
+		return randint(1,hitDie)
 	def applyRaceHuman():
 		_race = "Human"
 		_size = "Medium"
@@ -115,3 +149,123 @@ class Character:
 		#+2 morale bonus on saving throws against fear: This bonus stacks with the halfling's +1 bonus on saving throws in general
 		#+1 racial bonus on attack rolls with thrown weapons and slings
 		_languages.append("Halfling")
+	def applyBarbarian1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBarbarian2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBarbarian3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBarbarian4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBarbarian5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBarbarian6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyBard6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyMonk6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyPaladin6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRanger6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyRogue6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySoldier6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(10,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver1(rerollOne=False,increaseByAverage=False): # please remember to rename this class
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver2(rerollOne=False,increaseByAverage=False): 
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver3(rerollOne=False,increaseByAverage=False): 
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver4(rerollOne=False,increaseByAverage=False): 
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver5(rerollOne=False,increaseByAverage=False): 
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySongweaver6(rerollOne=False,increaseByAverage=False): 
+		increaseHitpoints(6,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applySorcerer6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard1(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard2(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard3(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard4(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard5(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+	def applyWizard6(rerollOne=False,increaseByAverage=False):
+		increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
