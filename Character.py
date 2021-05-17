@@ -1,5 +1,6 @@
 #import json
 from random import randint
+from math import floor
 
 from ETypes import Classes
 from ETypes import Race
@@ -55,13 +56,11 @@ class Character:
 	darkvision = 0 # Darkvision range in feet
 	lowLightVision = False # False/True = has/doesn't have LLV
 	###
-	# Why is low light vision even a thing? Its actual effects are so vague that basically everyone just ignores them, and yet because
+	# Why is low light vision even a thing? Its actual effects are so poorly explained that basically everyone just ignores them, and yet because
 	# it's a racial trait it's one of the first things new players are going to see. Why muddy the waters like this? Just give elves
 	# 30 feet of darkvision or something and be done with it.
 	# inb4 "But illumination!" Nobody tracks that, it's annoying, if you do track it congratulations on being a massive nerd
 	###
-	firstLevelBonusFeats = 0
-	bonusSkillPoints = 0
 	def assignAbilityScores(self,character,con,dex,str,cha,int,wis):
 		self.con = con
 		self.dex = dex
@@ -75,9 +74,9 @@ class Character:
 			self.baseHitpoints += hitDie
 		elif increaseByAverage:
 			if level%2==0:
-				self.baseHitpoints += int(hitDie/2)
+				self.baseHitpoints += int(floor(hitDie/2))
 			else:
-				self.baseHitpoints += int(hitDie/2)+1
+				self.baseHitpoints += int(floor(hitDie/2))+1
 		elif rerollOne:
 			self.baseHitpoints += randint(2,hitDie)
 		else:
@@ -87,7 +86,7 @@ class Character:
 		self.level += 1
 		if classLevel == Classes.BARBARIAN:
 			self.barbarianLevel += 1
-			increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
+			self.increaseHitpoints(12,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
 			Bard.applyBardLevel(self)
 		elif classLevel == Classes.BARD:
 			self.bardLevel += 1
@@ -125,3 +124,28 @@ class Character:
 			self.wizardLevel += 1
 			self.increaseHitpoints(4,rerollOne=rerollOne,increaseByAverage=increaseByAverage)
 			Wizard.applyWizardLevel(self)	
+	def conMod(self):
+		return floor((self.con-10)/2)
+	def dexMod(self):
+		return floor((self.dex-10)/2)
+	def strMod(self):
+		return floor((self.str-10)/2)
+	def chaMod(self):
+		return floor((self.cha-10)/2)
+	def intMod(self):
+		return floor((self.int-10)/2)
+	def wisMod(self):
+		return floor((self.wis-10)/2)
+	# Features of Multiple Classes 
+	trapSense = 0
+	uncannyDodge = False
+	improvedUncannyDodge = False
+	# Barbarian Class Features
+	barbarianDamageReduction = 0
+	barbarianGreaterRage = False
+	barbarianIndomitableWill = False
+	barbarianRagesPerDay = 0 
+	barbarianFastMovement = 0
+	barbarianIlliterate = False
+	barbarianTirelessRage = False
+	barbarianMightyRage = False

@@ -34,7 +34,7 @@ def applyRaceElf(character):
 	#immunity to magic sleep effects, and a +2 racial saving throw bonus against enchantment spells or effects
 	#weapon proficiency: Elves receive the Martial Weapon Proficiency feats for the longsword, rapier, longbow (including composite longbow), and shortbow (including composite shortbow) as bonus feats
 	#+2 racial bonus on Listen, Search, and Spot checks. An elf who merely passes within 5 feet of a secret or concealed door is entitled to a Search check to notice it as if she were actively looking for it.
-	character.languages.append("Elven")		
+	character.languages.append("Elven")
 def applyRaceGnome(character):
 	character.race = Race.GNOME
 	character.size = Size.SMALL
