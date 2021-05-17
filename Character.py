@@ -5,16 +5,16 @@ from ETypes import Classes
 from ETypes import Race
 from ETypes import Size
 
-import Barbarian
-import Bard
-import Cleric
-import Fighter
-import Monk
-import Paladin
-import Ranger
-import Rogue
-import Sorcerer
-import Wizard
+from CharacterLevels import Barbarian
+from CharacterLevels import Bard
+from CharacterLevels import Cleric
+from CharacterLevels import Fighter
+from CharacterLevels import Monk
+from CharacterLevels import Paladin
+from CharacterLevels import Ranger
+from CharacterLevels import Rogue
+from CharacterLevels import Sorcerer
+from CharacterLevels import Wizard
 
 class Character:
 	# Ability Scores
