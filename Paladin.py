@@ -1,3 +1,2 @@
-from Character import Character
-
-def applyPaldinLevel(Character):
+def applyPaldinLevel(character):
+	return

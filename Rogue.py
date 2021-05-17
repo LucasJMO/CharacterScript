@@ -1,3 +1,2 @@
-from Character import Character
-
-def applyRogueLevel(Character):
+def applyRogueLevel(character):
+	return

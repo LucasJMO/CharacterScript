@@ -1,3 +1,2 @@
-from Character import Character
-
-def applyRangerLevel(Character):
+def applyRangerLevel(character):
+	return

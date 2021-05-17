@@ -1,3 +1,2 @@
-from Character import Character
-
-def applyClericLevel(Character):
+def applyClericLevel(character):
+	return

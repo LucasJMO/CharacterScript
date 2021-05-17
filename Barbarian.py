@@ -1,4 +1,2 @@
-from Character import Character
-
-def applyBarbarianLevel(Character):
-	
+def applyBarbarianLevel(character):
+	return

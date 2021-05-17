@@ -1,3 +1,2 @@
-from Character import Character
-
-def applySorcererLevel(Character):
+def applySorcererLevel(character):
+	return

@@ -1,4 +1,2 @@
-from Character import Character
-
-def applyBardLevel(Character):
-	
+def applyBardLevel(character):
+	return
